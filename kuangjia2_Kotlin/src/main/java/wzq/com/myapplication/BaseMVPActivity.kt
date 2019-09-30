@@ -11,8 +11,8 @@ import android.support.v7.app.AppCompatActivity
  *
  */
 
-abstract class BaseMVPActivity<V, P : BaseMVPPresenter<V>> : AppCompatActivity() {
-    lateinit var presenter: P
+abstract class BaseMVPActivity<View, Presenter : BaseMVPPresenter<View>> : AppCompatActivity() {
+    lateinit var presenter: Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ abstract class BaseMVPActivity<V, P : BaseMVPPresenter<V>> : AppCompatActivity()
         setListener()
     }
 
-    abstract fun initPresenter(): P //  定义方法的返回值
+    abstract fun initPresenter(): Presenter //  定义方法的返回值
     abstract fun getLayoutResId(): Int
     abstract fun initView()
     abstract fun initData()
@@ -32,7 +32,7 @@ abstract class BaseMVPActivity<V, P : BaseMVPPresenter<V>> : AppCompatActivity()
 
     override fun onResume() {
         super.onResume()
-        presenter.attach(this as V)
+        presenter.attach(this as View)
     }
 
 

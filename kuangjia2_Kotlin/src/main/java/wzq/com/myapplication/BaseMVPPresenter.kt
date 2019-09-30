@@ -6,11 +6,11 @@ package wzq.com.myapplication
  * <p>文件描述：<p>
  *
  */
-open class BaseMVPPresenter<V> {
+open class BaseMVPPresenter<View> {
 
-    var view: V? = null
+    var view: View? = null
 
-     fun attach(v: V) {
+     fun attach(v: View) {
         this.view = v
 
     }
